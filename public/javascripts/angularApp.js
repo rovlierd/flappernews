@@ -79,11 +79,20 @@ app.factory('posts', ['$http', 'auth', function($http, auth){
     });
   };
 
+  o.downvote = function(post) {
+		return $http.put('/posts/' + post._id + '/downvote', null, {
+			headers: {Authorization: 'Bearer ' + auth.getToken()}
+		}).success(function(data) {
+			post.upvotes -= 1;
+		});
+	};
+
   o.get = function (id) {
     return $http.get('/posts/' + id).then(function (res) {
       return res.data;
     });
   };
+ 
 
   o.addComment = function(id, comment) {
     return $http.post('/posts/' + id + '/comments', comment, {
@@ -175,6 +184,10 @@ app.controller('MainCtrl', [
     {
       posts.upvote(post);
     };
+    
+    $scope.decrementUpvotes = function (comment) {
+		posts.downvoteComment(post, comment);
+	};
 }]);
 
 app.controller('PostsCtrl',[
@@ -203,6 +216,9 @@ app.controller('PostsCtrl',[
        $scope.incrementUpvotes = function(comment){
          posts.upvoteComment(post, comment);
        };
+       $scope.deletePost =function(post){
+         posts.delete(post);
+       }
   }]);
 
   app.controller('AuthCtrl', [
