@@ -12,7 +12,10 @@ require('./models/Comments');
 require('./models/Users');
 require('./config/passport');
 //mongoose.connect('mongodb://localhost/news');
-mongoose.connect('mongodb://heroku_6lncbznq:Qzerty123@ds141088.mlab.com:41088/heroku_6lncbznq');
+mongoose.connect(process.env.MONGOLAB_URI,function(error){
+  if(error) console.error(error);
+  else console.log('mongo connected');
+});
 
 var index = require('./routes/index');
 var users = require('./routes/users');
