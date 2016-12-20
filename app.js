@@ -11,7 +11,8 @@ require('./models/Posts');
 require('./models/Comments');
 require('./models/Users');
 require('./config/passport');
-mongoose.connect('mongodb://localhost/news');
+//mongoose.connect('mongodb://localhost/news');
+mongoose.connect('mongodb://heroku_6lncbznq:Qzerty123@ds141088.mlab.com:41088/heroku_6lncbznq');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
