@@ -11,11 +11,11 @@ require('./models/Posts');
 require('./models/Comments');
 require('./models/Users');
 require('./config/passport');
-//mongoose.connect('mongodb://localhost/news');
-mongoose.connect(process.env.MONGOLAB_URI,function(error){
-  if(error) console.error(error);
-  else console.log('mongo connected');
-});
+mongoose.connect('mongodb://localhost/news');
+//mongoose.connect(process.env.MONGOLAB_URI,function(error){
+  //if(error) console.error(error);
+  //else console.log('mongo connected');
+//});
 
 var index = require('./routes/index');
 var users = require('./routes/users');
