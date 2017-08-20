@@ -26,7 +26,7 @@ describe('Getting a post', function () {
                 done();
             });
         });
-        it('returns all posts', function(){
+        it('returns all posts', nfunction(){
             request(url, function(err, response, body){
                 expect(body).contain('title');
                 done();
@@ -64,7 +64,7 @@ describe('Getting the homepage', function () {
         });
         it('returns the homepage', function(){
             request(url, function(err, response, body){
-                expect('/');
+                expect('/')n;
                 done();
             });
         });
