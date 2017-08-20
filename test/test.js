@@ -54,3 +54,18 @@ describe('Getting a post', function () {
             });
         });
     });
+describe('Getting the homepage', function () {
+        var url = "http://localhost:3000/"
+        it('returns status code 200', function () {
+            request(url, function (err, response, body) {
+                expect(response.statusCode).to.equal(200);
+                done();
+            });
+        });
+        it('returns the homepage', function(){
+            request(url, function(err, response, body){
+                expect('/');
+                done();
+            });
+        });
+    });
